@@ -1,0 +1,51 @@
+{
+  "name": "Example Workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "Start",
+      "type": "n8n-nodes-base.start",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "responseMode": "json",
+        "options": {
+          "rawOutputData": true
+        }
+      },
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [450, 300],
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "1",
+          "name": "http basic"
+        }
+      },
+      "conditions": {
+        "booleanFilters": []
+      }
+    }
+  ],
+  "connections": {
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "keepGoing": false,
+    "executeOnce": false
+  }
+}
